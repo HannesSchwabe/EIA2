@@ -1,198 +1,198 @@
 interface spielkarte {
     zahl: string;
-    farbe: string;
+    rot: boolean;
     symbol: string;
 }
 
 let karte1: spielkarte = {
     zahl: "7",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte2: spielkarte = {
     zahl: "8",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte3: spielkarte = {
     zahl: "9",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte4: spielkarte = {
     zahl: "10",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte5: spielkarte = {
     zahl: "bube",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte6: spielkarte = {
     zahl: "dame",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte7: spielkarte = {
     zahl: "koenig",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte8: spielkarte = {
     zahl: "ass",
-    farbe: "schwarz",
+    rot: false,
     symbol: "pik",
 }
 
 let karte9: spielkarte = {
     zahl: "7",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte10: spielkarte = {
     zahl: "8",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte11: spielkarte = {
     zahl: "9",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte12: spielkarte = {
     zahl: "10",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte13: spielkarte = {
     zahl: "bube",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte14: spielkarte = {
     zahl: "dame",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte15: spielkarte = {
     zahl: "koenig",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte16: spielkarte = {
     zahl: "ass",
-    farbe: "schwarz",
+    rot: false,
     symbol: "kreuz",
 }
 
 let karte17: spielkarte = {
     zahl: "7",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte18: spielkarte = {
     zahl: "8",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte19: spielkarte = {
     zahl: "9",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte20: spielkarte = {
     zahl: "10",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte21: spielkarte = {
     zahl: "bube",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte22: spielkarte = {
     zahl: "dame",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte23: spielkarte = {
     zahl: "koenig",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte24: spielkarte = {
     zahl: "ass",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte25: spielkarte = {
     zahl: "7",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte26: spielkarte = {
     zahl: "8",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte27: spielkarte = {
     zahl: "9",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte28: spielkarte = {
     zahl: "10",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte29: spielkarte = {
     zahl: "bube",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte30: spielkarte = {
     zahl: "dame",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte31: spielkarte = {
     zahl: "koenig",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
 let karte32: spielkarte = {
     zahl: "ass",
-    farbe: "rot",
+    rot: true,
     symbol: "herz",
 }
 
@@ -205,43 +205,46 @@ function anzahlHandkarten(): void {
     let base = 10;
     let promptValue: string = prompt('Wie viele Karten?');
     let anzahl = parseInt(promptValue, base);
-    kartenInHandstapel(anzahl);
+    pushekartenInHandstapel(anzahl);
 }
 
-function kartenInHandstapel(_anzahl: number): void {
-    for(let i:number = 0; i<=_anzahl; i++) {
-        let k: number = Math.floor(Math.random() * ziehstapel.length);
+function pushekartenInHandstapel(_anzahl: number): void {
+    let k: number = 0;
+    for (let i: number = 0; i < _anzahl; i++) {
+        k = Math.floor(Math.random() * ziehstapel.length);
         handstapel.push(ziehstapel[k]);
         let removed = ziehstapel.splice(k, 1);
-        placeHandstapel(handstapel[k]);
-        kartenInSpielstapel();
-        placeZiehstapel(ziehstapel[k]);
+        placeHandstapel(handstapel[i]);
+    }
+    pushekartenInSpielstapel();
+    for(let i: number = 0; i < 32; i++) {
+        placeZiehstapel(ziehstapel[i]);
     }
 }
 
-function kartenInSpielstapel() {
-    let i: number = Math.floor(Math.random() * ziehstapel.length);
-    spielstapel.push(ziehstapel[i]);
-    let removed = ziehstapel.splice(i, 1);
-    placeSpielstapel(spielstapel[i]);
+function pushekartenInSpielstapel(): void {
+    for(let i: number = 0; i < 1; i++) {
+        let k: number = Math.floor(Math.random() * ziehstapel.length);
+        spielstapel.push(ziehstapel[k]);
+        let removed = ziehstapel.splice(k, 1);
+        placeSpielstapel(spielstapel[i]);
+    }
 }
 
-function placeHandstapel (_k: spielkarte) {
+function placeHandstapel(k: spielkarte): void {
     let prodElement = document.createElement('div');
     prodElement.innerHTML = `<div class="handstapel">
-    <p> ${_k.farbe} </p>
-    <p> ${_k.zahl} </p>
-    <p> ${_k.symbol} </p>
+    <p> ${k.zahl} </p>
+    <p> ${k.symbol} </p>
     </div>`
     document.getElementById("body").appendChild(prodElement);
 }
 
-function placeZiehstapel(_k: spielkarte) {
+function placeZiehstapel(k: spielkarte) {
     let prodElement = document.createElement('div');
     prodElement.innerHTML = `<div class="ziehstapel">
-    <p> ${_k.farbe} </p>
-    <p> ${_k.zahl} </p>
-    <p> ${_k.symbol} </p>
+    <p> ${k.zahl} </p>
+    <p> ${k.symbol} </p>
     </div>`
     document.getElementById("body").appendChild(prodElement);
 }
@@ -249,7 +252,6 @@ function placeZiehstapel(_k: spielkarte) {
 function placeSpielstapel(_k: spielkarte) {
     let prodElement = document.createElement('div');
     prodElement.innerHTML = `<div class="spielstapel">
-    <p> ${_k.farbe} </p>
     <p> ${_k.zahl} </p>
     <p> ${_k.symbol} </p>
     </div>`
