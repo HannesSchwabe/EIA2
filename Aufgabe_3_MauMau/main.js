@@ -197,6 +197,7 @@ var MauMau;
     <p> ${k.symbol} </p>
     </div>`;
         document.getElementById("body").appendChild(prodElement);
+        console.log(handstapel);
     }
     function placeZiehstapel(k) {
         let prodElement = document.createElement('div');
@@ -205,6 +206,7 @@ var MauMau;
     <p> ${k.symbol} </p>
     </div>`;
         document.getElementById("body").appendChild(prodElement);
+        console.log(ziehstapel);
     }
     function placeSpielstapel(_k) {
         let prodElement = document.createElement('div');
@@ -213,6 +215,7 @@ var MauMau;
     <p> ${_k.symbol} </p>
     </div>`;
         document.getElementById("body").appendChild(prodElement);
+        console.log(spielstapel);
     }
 })(MauMau || (MauMau = {}));
 //# sourceMappingURL=main.js.map

@@ -242,6 +242,7 @@ namespace MauMau {
     <p> ${k.symbol} </p>
     </div>`
         document.getElementById("body").appendChild(prodElement);
+        console.log(handstapel);
     }
 
     function placeZiehstapel(k: spielkarte) {
@@ -251,6 +252,7 @@ namespace MauMau {
     <p> ${k.symbol} </p>
     </div>`
         document.getElementById("body").appendChild(prodElement);
+        console.log(ziehstapel);
     }
 
     function placeSpielstapel(_k: spielkarte) {
@@ -260,6 +262,7 @@ namespace MauMau {
     <p> ${_k.symbol} </p>
     </div>`
         document.getElementById("body").appendChild(prodElement);
+        console.log(spielstapel);
     }
 
 }
