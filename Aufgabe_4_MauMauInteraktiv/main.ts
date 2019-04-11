@@ -222,7 +222,7 @@ namespace MauMau {
         }
         pushekartenInSpielstapel();
         for (let i: number = 0; i < ziehstapel.length; i++) {
-            placeZiehstapel(ziehstapel[i]);
+            placeZiehstapel(ziehstapel[i], i);
         }
     }
 
@@ -244,9 +244,9 @@ namespace MauMau {
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
 
-    function placeZiehstapel(k: spielkarte) {
+    function placeZiehstapel(k: spielkarte, _i: number) {
         let prodElement = document.createElement('div');
-        prodElement.innerHTML = `<fieldset class="ziehstapel">
+        prodElement.innerHTML = `<fieldset class="ziehstapel" id=${_i}>
     <p> ${k.zahl} </p>
     <p> ${k.symbol} </p>
     </fieldset>`
@@ -262,6 +262,7 @@ namespace MauMau {
         document.getElementById("kastenspielstapel").appendChild(prodElement);
     }
 
+    //Karten von Handstapel in Spielstapel:
 
     document.addEventListener("DOMContentLoaded", test)
 
@@ -269,7 +270,6 @@ namespace MauMau {
         for (let i: number = 0; i <= handstapel.length; i++) {
             let handkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("handstapel")[i];
             handkartenEvent.addEventListener("click", vonHandstapelInSpielstapel);
-
         }
     }
     function vonHandstapelInSpielstapel(_event: Event): void {
@@ -283,19 +283,87 @@ namespace MauMau {
         placeSpielstapel(karteInSpielstapel);
         console.log(spielstapel);
         console.log(handstapel);
-        placeHandstapelAktualisiert(cardIdNumber);
+        placeHandstapelLeeren(cardIdNumber);
+        test();
     }
 
-
-
-    function placeHandstapelAktualisiert(_cardIdNumber: number) {
-        let removed = handstapel.splice(_cardIdNumber, 1);
+    function placeHandstapelLeeren(_cardIdNumber: number) {
         document.getElementById("kastenhandstapel").innerHTML = "";
-        
+        for (let i: number = 0; i < handstapel.length; i++) {
+            placeHandstapelAktualisiert(handstapel[i], i);
+        }
+
         //for (let i: number = 0; i <= _cardIdNumber; i++) {
         //    document.getElementById("kastenhandstapel").innerHTML = handstapel[i];
         //}
     }
+
+    function placeHandstapelAktualisiert(k: spielkarte, _i: number) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+
+    //Karten von Ziehstapel in Handstapel:
+
+    document.addEventListener("DOMContentLoaded", init)
+
+    function init() {
+        for (let i: number = 0; i <= ziehstapel.length; i++) {
+            let handkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("ziehstapel")[i];
+            handkartenEvent.addEventListener("click", vonZiehstapelInHandstapel);
+        }
+    }
+
+    function vonZiehstapelInHandstapel() {
+        let k: number = Math.floor(Math.random() * ziehstapel.length);
+        handstapel.push(ziehstapel[k]);
+        ziehstapel.splice(k, 1);
+        document.getElementById("kastenhandstapel").innerHTML = "";
+        for (let i: number = 0; i < handstapel.length; i++) {
+            placeHandstapelAktualisiertZwei(handstapel[i], i);
+        }
+    }
+
+    function placeHandstapelAktualisiertZwei(k: spielkarte, _i: number) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+
+    document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
+
+    function vonZiehstapelInHandstapelKeyDown(_event: KeyboardEvent) {
+        if (_event.keyCode == 32) {
+
+            let k: number = Math.floor(Math.random() * ziehstapel.length);
+            handstapel.push(ziehstapel[k]);
+            ziehstapel.splice(k, 1);
+            document.getElementById("kastenhandstapel").innerHTML = "";
+            for (let i: number = 0; i < handstapel.length; i++) {
+                placeHandstapelAktualisiertKeyDown(handstapel[i], i);
+            }
+        }
+    }
+
+    function placeHandstapelAktualisiertKeyDown(k: spielkarte, _i: number) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+
+
+
+
 
 
 

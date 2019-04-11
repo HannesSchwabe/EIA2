@@ -180,7 +180,7 @@ var MauMau;
         }
         pushekartenInSpielstapel();
         for (let i = 0; i < ziehstapel.length; i++) {
-            placeZiehstapel(ziehstapel[i]);
+            placeZiehstapel(ziehstapel[i], i);
         }
     }
     function pushekartenInSpielstapel() {
@@ -198,9 +198,9 @@ var MauMau;
     </fieldset>`;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
-    function placeZiehstapel(k) {
+    function placeZiehstapel(k, _i) {
         let prodElement = document.createElement('div');
-        prodElement.innerHTML = `<fieldset class="ziehstapel">
+        prodElement.innerHTML = `<fieldset class="ziehstapel" id=${_i}>
     <p> ${k.zahl} </p>
     <p> ${k.symbol} </p>
     </fieldset>`;
@@ -214,6 +214,7 @@ var MauMau;
     </fieldset>`;
         document.getElementById("kastenspielstapel").appendChild(prodElement);
     }
+    //Karten von Handstapel in Spielstapel:
     document.addEventListener("DOMContentLoaded", test);
     function test() {
         for (let i = 0; i <= handstapel.length; i++) {
@@ -232,14 +233,70 @@ var MauMau;
         placeSpielstapel(karteInSpielstapel);
         console.log(spielstapel);
         console.log(handstapel);
-        placeHandstapelAktualisiert(cardIdNumber);
+        placeHandstapelLeeren(cardIdNumber);
+        test();
     }
-    function placeHandstapelAktualisiert(_cardIdNumber) {
-        let removed = handstapel.splice(_cardIdNumber, 1);
+    function placeHandstapelLeeren(_cardIdNumber) {
         document.getElementById("kastenhandstapel").innerHTML = "";
+        for (let i = 0; i < handstapel.length; i++) {
+            placeHandstapelAktualisiert(handstapel[i], i);
+        }
         //for (let i: number = 0; i <= _cardIdNumber; i++) {
         //    document.getElementById("kastenhandstapel").innerHTML = handstapel[i];
         //}
+    }
+    function placeHandstapelAktualisiert(k, _i) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`;
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+    //Karten von Ziehstapel in Handstapel:
+    document.addEventListener("DOMContentLoaded", init);
+    function init() {
+        for (let i = 0; i <= ziehstapel.length; i++) {
+            let handkartenEvent = document.getElementsByClassName("ziehstapel")[i];
+            handkartenEvent.addEventListener("click", vonZiehstapelInHandstapel);
+        }
+    }
+    function vonZiehstapelInHandstapel() {
+        let k = Math.floor(Math.random() * ziehstapel.length);
+        handstapel.push(ziehstapel[k]);
+        ziehstapel.splice(k, 1);
+        document.getElementById("kastenhandstapel").innerHTML = "";
+        for (let i = 0; i < handstapel.length; i++) {
+            placeHandstapelAktualisiertZwei(handstapel[i], i);
+        }
+    }
+    function placeHandstapelAktualisiertZwei(k, _i) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`;
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+    document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
+    function vonZiehstapelInHandstapelKeyDown(_event) {
+        if (_event.keyCode == 32) {
+            let k = Math.floor(Math.random() * ziehstapel.length);
+            handstapel.push(ziehstapel[k]);
+            ziehstapel.splice(k, 1);
+            document.getElementById("kastenhandstapel").innerHTML = "";
+            for (let i = 0; i < handstapel.length; i++) {
+                placeHandstapelAktualisiertKeyDown(handstapel[i], i);
+            }
+        }
+    }
+    function placeHandstapelAktualisiertKeyDown(k, _i) {
+        let prodElement = document.createElement('div');
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
+        <p> ${k.zahl} </p>
+        <p> ${k.symbol} </p>
+        </fieldset>`;
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
 })(MauMau || (MauMau = {}));
 //# sourceMappingURL=main.js.map
