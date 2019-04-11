@@ -176,10 +176,10 @@ var MauMau;
             k = Math.floor(Math.random() * ziehstapel.length);
             handstapel.push(ziehstapel[k]);
             let removed = ziehstapel.splice(k, 1);
-            placeHandstapel(handstapel[i]);
+            placeHandstapel(handstapel[i], i);
         }
         pushekartenInSpielstapel();
-        for (let i = 0; i < 32; i++) {
+        for (let i = 0; i < ziehstapel.length; i++) {
             placeZiehstapel(ziehstapel[i]);
         }
     }
@@ -190,14 +190,13 @@ var MauMau;
         let removed = ziehstapel.splice(k, 1);
         placeSpielstapel(spielstapel[i]);
     }
-    function placeHandstapel(k) {
+    function placeHandstapel(k, _i) {
         let prodElement = document.createElement('div');
-        prodElement.innerHTML = `<fieldset class="handstapel">
+        prodElement.innerHTML = `<fieldset class="handstapel" id=${_i}>
     <p> ${k.zahl} </p>
     <p> ${k.symbol} </p>
     </fieldset>`;
-        document.getElementById("body").appendChild(prodElement);
-        console.log(handstapel);
+        document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
     function placeZiehstapel(k) {
         let prodElement = document.createElement('div');
@@ -205,8 +204,7 @@ var MauMau;
     <p> ${k.zahl} </p>
     <p> ${k.symbol} </p>
     </fieldset>`;
-        document.getElementById("body").appendChild(prodElement);
-        console.log(ziehstapel);
+        document.getElementById("kastenziehstapel").appendChild(prodElement);
     }
     function placeSpielstapel(_k) {
         let prodElement = document.createElement('div');
@@ -214,22 +212,34 @@ var MauMau;
     <p> ${_k.zahl} </p>
     <p> ${_k.symbol} </p>
     </fieldset>`;
-        document.getElementById("body").appendChild(prodElement);
-        console.log(spielstapel);
+        document.getElementById("kastenspielstapel").appendChild(prodElement);
     }
     document.addEventListener("DOMContentLoaded", test);
     function test() {
         for (let i = 0; i <= handstapel.length; i++) {
-            let HandkartenEvent = document.getElementsByClassName("handstapel")[i];
-            HandkartenEvent.addEventListener("click", vonHandstapelInSpielstapel);
-            function vonHandstapelInSpielstapel(_event) {
-                console.log('Hallo');
-                console.log(_event);
-                console.log(_event.target);
-                _event.target;
-            }
+            let handkartenEvent = document.getElementsByClassName("handstapel")[i];
+            handkartenEvent.addEventListener("click", vonHandstapelInSpielstapel);
         }
     }
-    console.log('Hallo');
+    function vonHandstapelInSpielstapel(_event) {
+        console.log(_event);
+        let clickedCard = _event.target;
+        let cardId = clickedCard.id;
+        let cardIdNumber = Number(cardId);
+        let karteInSpielstapel = handstapel[cardIdNumber];
+        spielstapel.push(handstapel[cardIdNumber]);
+        handstapel.splice(cardIdNumber, 1);
+        placeSpielstapel(karteInSpielstapel);
+        console.log(spielstapel);
+        console.log(handstapel);
+        placeHandstapelAktualisiert(cardIdNumber);
+    }
+    function placeHandstapelAktualisiert(_cardIdNumber) {
+        let removed = handstapel.splice(_cardIdNumber, 1);
+        document.getElementById("kastenhandstapel").innerHTML = "";
+        //for (let i: number = 0; i <= _cardIdNumber; i++) {
+        //    document.getElementById("kastenhandstapel").innerHTML = handstapel[i];
+        //}
+    }
 })(MauMau || (MauMau = {}));
 //# sourceMappingURL=main.js.map
