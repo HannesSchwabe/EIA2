@@ -254,6 +254,7 @@ var MauMau;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
     //Karten von Ziehstapel in Handstapel:
+    //Mit Klick auf Ziehstapel:
     document.addEventListener("DOMContentLoaded", init);
     function init() {
         for (let i = 0; i <= ziehstapel.length; i++) {
@@ -269,6 +270,7 @@ var MauMau;
         for (let i = 0; i < handstapel.length; i++) {
             placeHandstapelAktualisiertZwei(handstapel[i], i);
         }
+        test();
     }
     function placeHandstapelAktualisiertZwei(k, _i) {
         let prodElement = document.createElement('div');
@@ -278,6 +280,7 @@ var MauMau;
         </fieldset>`;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
+    //Mit Leertaste:
     document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
     function vonZiehstapelInHandstapelKeyDown(_event) {
         if (_event.keyCode == 32) {
@@ -288,6 +291,7 @@ var MauMau;
             for (let i = 0; i < handstapel.length; i++) {
                 placeHandstapelAktualisiertKeyDown(handstapel[i], i);
             }
+            test();
         }
     }
     function placeHandstapelAktualisiertKeyDown(k, _i) {

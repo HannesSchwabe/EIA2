@@ -308,6 +308,7 @@ namespace MauMau {
     }
 
     //Karten von Ziehstapel in Handstapel:
+    //Mit Klick auf Ziehstapel:
 
     document.addEventListener("DOMContentLoaded", init)
 
@@ -326,6 +327,7 @@ namespace MauMau {
         for (let i: number = 0; i < handstapel.length; i++) {
             placeHandstapelAktualisiertZwei(handstapel[i], i);
         }
+        test();
     }
 
     function placeHandstapelAktualisiertZwei(k: spielkarte, _i: number) {
@@ -336,6 +338,8 @@ namespace MauMau {
         </fieldset>`
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
+
+    //Mit Leertaste:
 
     document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
 
@@ -349,6 +353,7 @@ namespace MauMau {
             for (let i: number = 0; i < handstapel.length; i++) {
                 placeHandstapelAktualisiertKeyDown(handstapel[i], i);
             }
+            test();
         }
     }
 
