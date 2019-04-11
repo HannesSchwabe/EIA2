@@ -230,5 +230,6 @@ var MauMau;
             }
         }
     }
+    console.log('Hallo');
 })(MauMau || (MauMau = {}));
 //# sourceMappingURL=main.js.map

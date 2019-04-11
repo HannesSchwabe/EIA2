@@ -283,5 +283,7 @@ namespace MauMau {
         }
     }
 
+    console.log('Hallo');
+
 
 }
