@@ -4,166 +4,202 @@ var MauMau;
         zahl: "7",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte2 = {
         zahl: "8",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte3 = {
         zahl: "9",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte4 = {
         zahl: "10",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte5 = {
         zahl: "bube",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte6 = {
         zahl: "dame",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte7 = {
         zahl: "koenig",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte8 = {
         zahl: "ass",
         rot: false,
         symbol: "pik",
+        value: 3,
     };
     let karte9 = {
         zahl: "7",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte10 = {
         zahl: "8",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte11 = {
         zahl: "9",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte12 = {
         zahl: "10",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte13 = {
         zahl: "bube",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte14 = {
         zahl: "dame",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte15 = {
         zahl: "koenig",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte16 = {
         zahl: "ass",
         rot: false,
         symbol: "kreuz",
+        value: 4,
     };
     let karte17 = {
         zahl: "7",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte18 = {
         zahl: "8",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte19 = {
         zahl: "9",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte20 = {
         zahl: "10",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte21 = {
         zahl: "bube",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte22 = {
         zahl: "dame",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte23 = {
         zahl: "koenig",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte24 = {
         zahl: "ass",
         rot: true,
-        symbol: "herz",
+        symbol: "karo",
+        value: 2,
     };
     let karte25 = {
         zahl: "7",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte26 = {
         zahl: "8",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte27 = {
         zahl: "9",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte28 = {
         zahl: "10",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte29 = {
         zahl: "bube",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte30 = {
         zahl: "dame",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte31 = {
         zahl: "koenig",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let karte32 = {
         zahl: "ass",
         rot: true,
         symbol: "herz",
+        value: 1,
     };
     let ziehstapel = [karte1, karte2, karte3, karte4, karte5, karte6, karte7, karte8, karte9, karte10, karte11, karte12, karte13, karte14, karte15, karte16, karte17, karte18, karte19, karte20, karte21, karte22, karte23, karte24, karte25, karte26, karte27, karte28, karte29, karte30, karte31, karte32];
     let spielstapel = [];
     let handstapel = [];
     document.addEventListener("DOMContentLoaded", anzahlHandkarten);
+    document.addEventListener("DOMContentLoaded", test);
+    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
+    document.addEventListener("DOMContentLoaded", sortCard);
     function anzahlHandkarten() {
         let base = 10;
         let promptValue = prompt('Wie viele Karten?');
@@ -215,7 +251,6 @@ var MauMau;
         document.getElementById("kastenspielstapel").appendChild(prodElement);
     }
     //Karten von Handstapel in Spielstapel:
-    document.addEventListener("DOMContentLoaded", test);
     function test() {
         for (let i = 0; i <= handstapel.length; i++) {
             let handkartenEvent = document.getElementsByClassName("handstapel")[i];
@@ -255,7 +290,6 @@ var MauMau;
     }
     //Karten von Ziehstapel in Handstapel:
     //Mit Klick auf Ziehstapel:
-    document.addEventListener("DOMContentLoaded", init);
     function init() {
         for (let i = 0; i <= ziehstapel.length; i++) {
             let handkartenEvent = document.getElementsByClassName("ziehstapel")[i];
@@ -281,7 +315,6 @@ var MauMau;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
     //Mit Leertaste:
-    document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
     function vonZiehstapelInHandstapelKeyDown(_event) {
         if (_event.keyCode == 32) {
             let k = Math.floor(Math.random() * ziehstapel.length);
@@ -301,6 +334,32 @@ var MauMau;
         <p> ${k.symbol} </p>
         </fieldset>`;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
+    }
+    //Handstapel sortieren...
+    function sortCard() {
+        handstapel.sort(sortiereKarten);
+        document.getElementById("handstapel").innerHTML = "";
+        for (let i = 0; i < handstapel.length; i++) {
+            erstelleHandkartenNeu(handstapel[i], i);
+        }
+        //init();
+    }
+    function sortiereKarten(_a, _b) {
+        if (_a.value < _b.value) {
+            return -1;
+        }
+        if (_a.value > _b.value) {
+            return 1;
+        }
+        return 0;
+    }
+    function erstelleHandkartenNeu(_c, _i) {
+        let prodCard = document.createElement("div");
+        prodCard.innerHTML = `<fieldset class="handstapel id="${_i}">
+        <p> ${_c.zahl}</p>
+        <p> ${_c.symbol}</p>
+        </fieldset>`;
+        document.getElementById("kastenhandstapel").appendChild(prodCard);
     }
 })(MauMau || (MauMau = {}));
 //# sourceMappingURL=main.js.map
