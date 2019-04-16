@@ -199,7 +199,6 @@ var MauMau;
     document.addEventListener("DOMContentLoaded", test);
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
-    document.addEventListener("DOMContentLoaded", sortCard);
     function anzahlHandkarten() {
         let base = 10;
         let promptValue = prompt('Wie viele Karten?');
@@ -237,8 +236,7 @@ var MauMau;
     function placeZiehstapel(k, _i) {
         let prodElement = document.createElement('div');
         prodElement.innerHTML = `<fieldset class="ziehstapel" id=${_i}>
-    <p> ${k.zahl} </p>
-    <p> ${k.symbol} </p>
+   
     </fieldset>`;
         document.getElementById("kastenziehstapel").appendChild(prodElement);
     }
@@ -291,6 +289,7 @@ var MauMau;
     //Karten von Ziehstapel in Handstapel:
     //Mit Klick auf Ziehstapel:
     function init() {
+        document.getElementById("sortierenHandstapel").addEventListener("click", sortCard);
         for (let i = 0; i <= ziehstapel.length; i++) {
             let handkartenEvent = document.getElementsByClassName("ziehstapel")[i];
             handkartenEvent.addEventListener("click", vonZiehstapelInHandstapel);
@@ -336,13 +335,13 @@ var MauMau;
         document.getElementById("kastenhandstapel").appendChild(prodElement);
     }
     //Handstapel sortieren...
-    function sortCard() {
+    function sortCard(_event) {
         handstapel.sort(sortiereKarten);
-        document.getElementById("handstapel").innerHTML = "";
+        document.getElementById("kastenhandstapel").innerHTML = "";
         for (let i = 0; i < handstapel.length; i++) {
             erstelleHandkartenNeu(handstapel[i], i);
         }
-        //init();
+        test();
     }
     function sortiereKarten(_a, _b) {
         if (_a.value < _b.value) {

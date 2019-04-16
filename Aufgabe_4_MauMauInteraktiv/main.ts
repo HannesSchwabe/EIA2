@@ -241,7 +241,7 @@ namespace MauMau {
     document.addEventListener("DOMContentLoaded", test);
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", vonZiehstapelInHandstapelKeyDown);
-    document.addEventListener("DOMContentLoaded", sortCard);
+
 
     function anzahlHandkarten(): void {
         let base = 10;
@@ -285,8 +285,7 @@ namespace MauMau {
     function placeZiehstapel(k: spielkarte, _i: number) {
         let prodElement = document.createElement('div');
         prodElement.innerHTML = `<fieldset class="ziehstapel" id=${_i}>
-    <p> ${k.zahl} </p>
-    <p> ${k.symbol} </p>
+   
     </fieldset>`
         document.getElementById("kastenziehstapel").appendChild(prodElement);
     }
@@ -347,6 +346,7 @@ namespace MauMau {
     //Mit Klick auf Ziehstapel:
 
     function init() {
+        document.getElementById("sortierenHandstapel").addEventListener("click", sortCard);
         for (let i: number = 0; i <= ziehstapel.length; i++) {
             let handkartenEvent: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByClassName("ziehstapel")[i];
             handkartenEvent.addEventListener("click", vonZiehstapelInHandstapel);
@@ -400,14 +400,14 @@ namespace MauMau {
 
     //Handstapel sortieren...
 
-    function sortCard(): void {
+    function sortCard(_event: Event): void {
         handstapel.sort(sortiereKarten);
 
-        document.getElementById("handstapel").innerHTML = "";
+        document.getElementById("kastenhandstapel").innerHTML = "";
         for (let i: number = 0; i < handstapel.length; i++) {
             erstelleHandkartenNeu(handstapel[i], i);
         }
-        //init();
+        test();
     }
 
     function sortiereKarten(_a: spielkarte, _b: spielkarte): number {
