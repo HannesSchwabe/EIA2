@@ -1,5 +1,5 @@
-window.addEventListener("load", init); // Preis berechnen//
-document.addEventListener("DOMContentLoaded", kaufen); //button//
+window.addEventListener("load", init);
+document.addEventListener("DOMContentLoaded", kaufen);
 function init(_event) {
     console.log("init");
     let fieldsetElement = document.getElementsByTagName("fieldset");

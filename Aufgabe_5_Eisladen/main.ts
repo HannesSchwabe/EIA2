@@ -1,6 +1,6 @@
 
-window.addEventListener("load", init); // Preis berechnen//
-document.addEventListener("DOMContentLoaded", kaufen); //button//
+window.addEventListener("load", init); 
+document.addEventListener("DOMContentLoaded", kaufen); 
 
 
 
