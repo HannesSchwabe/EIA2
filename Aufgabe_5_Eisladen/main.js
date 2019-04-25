@@ -17,13 +17,22 @@ function berechnePreis(_event) {
     document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
     let input = document.getElementsByTagName("input");
     for (let i = 0; i < input.length; i++) {
-        if (input[i].checked == true) { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
+        if (input[i].name == "Stepper") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
             let preis = Number(input[i].value);
             anfangsPreis += preis;
             let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
             erstellen.innerHTML = `<p>
-        <p> ${input[i].className}</p>
-        <p> ${input[i].name}</p>`;
+            <p> ${input[i].className}</p>`;
+            document.getElementById("Übersicht").appendChild(erstellen);
+        }
+        document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
+        //for (let i: number = 0; i < input.length; i++) {
+        if (input[i].checked == true) {
+            let preis = Number(input[i].value);
+            anfangsPreis += preis;
+            let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
+            erstellen.innerHTML = `<p>
+            <p> ${input[i].name}</p>`;
             document.getElementById("Übersicht").appendChild(erstellen);
         }
         document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
