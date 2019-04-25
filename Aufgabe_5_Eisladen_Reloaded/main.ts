@@ -9,7 +9,6 @@ namespace L04_AssocArraysAndExport {
 
     function init(_event: Event): void { // über diese Funktion werden alle Fieldsets angesprochen und durchlaufen. Sie bekommen ein change-event//
         console.log(data);
-        displayHeteroPredef(data["Eissorten"][1]);
         displayHomoVar(data);
 
         let fieldsetElement: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
@@ -39,14 +38,25 @@ namespace L04_AssocArraysAndExport {
 
     function displayHeteroPredef(_heteroPredef: HeteroPredefined): void {
 
-        let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
-        let legend: HTMLLegendElement = document.createElement("legend");
+        let formelement: HTMLInputElement = document.createElement("input");
+        let legend: HTMLLabelElement = document.createElement("label");
 
-        legend.innerText = "Optionen:";
-        fieldset.innerText = _heteroPredef.class;
+        legend.innerText = _heteroPredef.call;
 
-        fieldset.appendChild(legend);
-        document.body.appendChild(fieldset);
+        formelement.setAttribute("type", _heteroPredef.type);
+        formelement.setAttribute("id", _heteroPredef.id);
+        formelement.setAttribute("name", _heteroPredef.name);
+        formelement.setAttribute("value", _heteroPredef.value);
+        formelement.setAttribute("step", _heteroPredef.step);
+        formelement.setAttribute("min", _heteroPredef.min);
+        formelement.setAttribute("max", _heteroPredef.max);
+        formelement.setAttribute("class", _heteroPredef.class);
+        formelement.setAttribute("call", _heteroPredef.call);
+
+        formelement.appendChild(legend);
+
+        document.getElementById("inhalt").appendChild(legend);
+        legend.appendChild(formelement);
 
 
     }
@@ -58,6 +68,7 @@ namespace L04_AssocArraysAndExport {
     }
 
     function berechnePreis(_event: Event): void {
+        console.log("test");
         let anfangsPreis: number = 0;
         document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
@@ -65,12 +76,19 @@ namespace L04_AssocArraysAndExport {
         for (let i: number = 0; i < input.length; i++) {
             if (input[i].name == "Stepper") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
                 let preis: number = Number(input[i].value);
+                let target: HTMLInputElement = <HTMLInputElement>_event.target;
                 anfangsPreis += preis;
-
-                let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
-                erstellen.innerHTML = `<p>
-            <p> ${input[i].className}</p>`
-                document.getElementById("Übersicht").appendChild(erstellen);
+                //if (input[i].getAttribute("call") == target.getAttribute("call")) {
+                  //  let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
+                    //erstellen.innerHTML = `<p> ${input[i].className}</p>`
+                    //document.getElementById("Übersicht").appendChild(erstellen);
+                //}
+                let anzahlKugeln: number = Number(input[i].value);
+                if (anzahlKugeln > 0) {
+                    let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
+                    erstellen.innerHTML = `<p> ${input[i].className}</p>`
+                    document.getElementById("Übersicht").appendChild(erstellen);
+                }
             }
 
             document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
