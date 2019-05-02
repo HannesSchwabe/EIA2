@@ -52,6 +52,7 @@ namespace L04_AssocArraysAndExport {
         formelement.setAttribute("max", _heteroPredef.max);
         formelement.setAttribute("class", _heteroPredef.class);
         formelement.setAttribute("call", _heteroPredef.call);
+        formelement.setAttribute("alt", _heteroPredef.alt);
 
         formelement.appendChild(legend);
 
