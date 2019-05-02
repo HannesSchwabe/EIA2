@@ -1,4 +1,5 @@
 {
+	
 	"name": "miniserver",
 	"version": "1.0.0",
 	"description": "Minimal server just bouncing the URL",
