@@ -5,7 +5,7 @@
 	"author": "Jirka, adapted by Lukas",
 	"main": "Server.js",
 	"scripts": {
-		"start": "../EIA2/Aufgabe_6_server.ts_kommentare/server.js"
+		"start": "node ../EIA2/Aufgabe_6_server.ts_kommentare/server.js"
 	},
 	"engines": {
 		"node": "8.11.3"
