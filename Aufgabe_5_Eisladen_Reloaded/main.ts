@@ -75,7 +75,7 @@ namespace L04_AssocArraysAndExport {
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
 
         for (let i: number = 0; i < input.length; i++) {
-            if (input[i].name == "Stepper") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
+            if (input[i].id == "0") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
                 let preis: number = Number(input[i].value);
                 let target: HTMLInputElement = <HTMLInputElement>_event.target;
                 anfangsPreis += preis;

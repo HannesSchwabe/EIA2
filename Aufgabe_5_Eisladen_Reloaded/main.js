@@ -54,7 +54,7 @@ var L04_AssocArraysAndExport;
         document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
         let input = document.getElementsByTagName("input");
         for (let i = 0; i < input.length; i++) {
-            if (input[i].name == "Stepper") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
+            if (input[i].id == "0") { // Wenn das element aufgrund des events angesprochen wurde, dann wird der value auf den anfangspreis gerechent//
                 let preis = Number(input[i].value);
                 let target = _event.target;
                 anfangsPreis += preis;

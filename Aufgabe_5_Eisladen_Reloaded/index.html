@@ -11,10 +11,11 @@
 </head>
 
 <body>
-
     <h1>Eisdealer</h1>
-    <fieldset id="inhalt"></fieldset>
-    <!--<fieldset id="radio_optionen">
+    <form action="https://schwabeh.herokuapp.com/" method="GET" id="test_id">
+
+        <fieldset id="inhalt"></fieldset>
+        <!--<fieldset id="radio_optionen">
         <legend>Optionen</legend>
         <p>Waffel/Becher 0,50€</p>
         <input type="radio" id="radio1" name="Becher/Waffel" value="0.50">
@@ -47,7 +48,7 @@
         <label for="check4.1">Mandeln</label>
     </fieldset>
     -->
-    <fieldset id="text_eingabe">
+        <fieldset id="text_eingabe">
             <legend>Eingabedaten</legend>
             Name
             <input type="text" name="Name" placeholder="Name, Vorname" value="" required>
@@ -64,18 +65,19 @@
             Mail
             <input type="text" name="Mail" value="" placeholder="Email">
             <hr>
-    </fieldset>
-    <fieldset id="radio_lieferung">
-        <legend>Optionen</legend>
-        <input type="radio" id="radio3" name="Zustellung" value="2">
-        <label for="radio3">Lieferung</label>
-        <input type="radio" id="radio4" name="Zustellung" value="0">
-        <label for="radio4">Abholung</label>
-        <legend>Anmerkungen</legend>
-        <textarea name="Anmerkungen" cols="30" rows="5" placeholder="..."></textarea>
-    </fieldset>
+        </fieldset>
+        <fieldset id="radio_lieferung">
+            <legend>Optionen</legend>
+            <input type="radio" id="radio3" name="Zustellung" value="2">
+            <label for="radio3">Lieferung</label>
+            <input type="radio" id="radio4" name="Zustellung" value="0">
+            <label for="radio4">Abholung</label>
+            <legend>Anmerkungen</legend>
+            <textarea name="Anmerkungen" cols="30" rows="5" placeholder="..."></textarea>
+        </fieldset>
+        <button type="submit" id="buy">Bestellen</button>
+    </form>
     <p id="preis">0</p>
-    <button id="buy">Bestellen</button>
     <div id="zusammenfassung">
         <h2>Übersicht</h2>
         <div id="Übersicht"></div>
