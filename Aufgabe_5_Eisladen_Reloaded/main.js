@@ -73,7 +73,7 @@ var L04_AssocArraysAndExport;
             document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
             //for (let i: number = 0; i < input.length; i++) {
             if (input[i].checked == true) {
-                let preis = Number(input[i].value);
+                let preis = Number(input[i].alt);
                 anfangsPreis += preis;
                 let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
                 erstellen.innerHTML = `<p>

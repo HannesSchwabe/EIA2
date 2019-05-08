@@ -96,7 +96,7 @@ namespace L04_AssocArraysAndExport {
 
             //for (let i: number = 0; i < input.length; i++) {
             if (input[i].checked == true) {
-                let preis: number = Number(input[i].value);
+                let preis: number = Number(input[i].alt);
                 anfangsPreis += preis;
 
 
