@@ -1,4 +1,4 @@
-namespace L04_AssocArraysAndExport {
+namespace L07_AssocArraysAndExport {
 	// Heterogenes assoziatives Array mit vordefinierten Schlüsseln
 	export interface HeteroPredefined {
 		type: string;

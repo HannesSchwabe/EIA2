@@ -1,7 +1,7 @@
-var L04_AssocArraysAndExport;
-(function (L04_AssocArraysAndExport) {
+var L07_AssocArraysAndExport;
+(function (L07_AssocArraysAndExport) {
     // Beispieldaten auf Basis der oben angegebenen Strukturen
-    L04_AssocArraysAndExport.data = {
+    L07_AssocArraysAndExport.data = {
         "Optionen": [
             { type: "radio", id: "radio1", name: "Becher/Waffel", value: "0", step: "", min: "", max: "", class: "", call: "Becher", alt: "0.50" },
             { type: "radio", id: "radio2", name: "Becher/Waffel", value: "0", step: "", min: "", max: "", class: "", call: "Waffel", alt: "0.50" }
@@ -21,5 +21,5 @@ var L04_AssocArraysAndExport;
             { type: "checkbox", id: "check1.1", name: "Mandeln", value: "0", step: "", min: "", max: "", class: "", call: "Mandeln", alt: "0.50" }
         ]
     };
-})(L04_AssocArraysAndExport || (L04_AssocArraysAndExport = {}));
+})(L07_AssocArraysAndExport || (L07_AssocArraysAndExport = {}));
 //# sourceMappingURL=data.js.map

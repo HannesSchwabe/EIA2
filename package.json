@@ -6,7 +6,7 @@
 	"author": "Jirka, adapted by Lukas",
 	"main": "Server.js",
 	"scripts": {
-		"start": "node Aufgabe_6_server_ts_kommentare/server.js"
+		"start": "node Aufgabe_7_ServerResponse/server.js"
 	},
 	"engines": {
 		"node": "8.11.3"

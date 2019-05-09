@@ -1,10 +1,10 @@
-var L04_AssocArraysAndExport;
-(function (L04_AssocArraysAndExport) {
+var L07_AssocArraysAndExport;
+(function (L07_AssocArraysAndExport) {
     window.addEventListener("load", init);
     document.addEventListener("DOMContentLoaded", kaufen);
     function init(_event) {
-        console.log(L04_AssocArraysAndExport.data);
-        displayHomoVar(L04_AssocArraysAndExport.data);
+        //console.log(data);
+        displayHomoVar(L07_AssocArraysAndExport.data);
         let fieldsetElement = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsetElement.length; i++) {
             let fieldset = fieldsetElement[i];
@@ -17,9 +17,9 @@ var L04_AssocArraysAndExport;
             // zwischenspeichern des Werts, der mit dem Schlüssel assoziiert ist
             let value = _homoVar[key];
             // hübsche Sachen, die man mit der Konsole noch machen kann
-            console.group(key);
-            console.dir(value);
-            console.groupEnd();
+            //console.group(key);
+            //console.dir(value);
+            //console.groupEnd();
             // der Wert ist ein Array, also wird noch darüber iteriert
             for (let i = 0; i < value.length; i++)
                 // und die einzelnen Datensätze darin angezeigt
@@ -45,11 +45,11 @@ var L04_AssocArraysAndExport;
         legend.appendChild(formelement);
     }
     function handleChange(_event) {
-        console.log(_event);
+        //console.log(_event);
         berechnePreis(_event);
     }
     function berechnePreis(_event) {
-        console.log("test");
+        //console.log("test");
         let anfangsPreis = 0;
         document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
         let input = document.getElementsByTagName("input");
@@ -104,5 +104,5 @@ var L04_AssocArraysAndExport;
             alert(`Bitte ${eingabeArray} vervollständigen`);
         }
     }
-})(L04_AssocArraysAndExport || (L04_AssocArraysAndExport = {}));
+})(L07_AssocArraysAndExport || (L07_AssocArraysAndExport = {}));
 //# sourceMappingURL=main.js.map

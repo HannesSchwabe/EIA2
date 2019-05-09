@@ -1,4 +1,4 @@
-namespace L04_AssocArraysAndExport {
+namespace L07_AssocArraysAndExport {
     window.addEventListener("load", init);
     document.addEventListener("DOMContentLoaded", kaufen);
 
@@ -8,7 +8,7 @@ namespace L04_AssocArraysAndExport {
 
 
     function init(_event: Event): void { // über diese Funktion werden alle Fieldsets angesprochen und durchlaufen. Sie bekommen ein change-event//
-        console.log(data);
+        //console.log(data);
         displayHomoVar(data);
 
         let fieldsetElement: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
@@ -26,9 +26,9 @@ namespace L04_AssocArraysAndExport {
             // zwischenspeichern des Werts, der mit dem Schlüssel assoziiert ist
             let value: HeteroPredefined[] = _homoVar[key];
             // hübsche Sachen, die man mit der Konsole noch machen kann
-            console.group(key);
-            console.dir(value);
-            console.groupEnd();
+            //console.group(key);
+            //console.dir(value);
+            //console.groupEnd();
             // der Wert ist ein Array, also wird noch darüber iteriert
             for (let i: number = 0; i < value.length; i++)
                 // und die einzelnen Datensätze darin angezeigt
@@ -63,13 +63,13 @@ namespace L04_AssocArraysAndExport {
     }
 
     function handleChange(_event: Event): void {
-        console.log(_event);
+        //console.log(_event);
         berechnePreis(_event);
 
     }
 
     function berechnePreis(_event: Event): void {
-        console.log("test");
+        //console.log("test");
         let anfangsPreis: number = 0;
         document.getElementById("Übersicht").innerHTML = ''; //Jedes mal, wenn eine neue Angabe gemacht wurde, wird die Überichts erst gelöscht und dann neu berechnet//
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");

@@ -1,36 +1,23 @@
-var L06_SendData;
-(function (L06_SendData) {
+var L07_SendData;
+(function (L07_SendData) {
     window.addEventListener("load", init);
     //let address: string = "http://localhost:8100";
-    let address = "https://schwabeh.herokuapp.com/";
+    let address = "https://schwabeh.herokuapp.com?Schokolade=5&Vanille=3";
     function init(_event) {
-        setupColorDivs();
+        let button = document.getElementById("buy");
+        button.addEventListener("click", handleClickOnButton);
     }
-    function setupColorDivs() {
-        let colors = ["red", "green", "blue"];
-        let divs = document.getElementsByTagName("div");
-        for (let i = 0; i < divs.length; i++) {
-            divs[i].style.backgroundColor = colors[i];
-            divs[i].addEventListener("click", handleClickOnDiv);
-        }
-    }
-    function handleClickOnDiv(_event) {
-        let style = _event.target.style;
-        console.log(style.backgroundColor);
-        sendRequestWithCustomData(style.backgroundColor);
-    }
-    function sendRequestWithCustomData(_color) {
+    function handleClickOnButton(_event) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?color=" + _color, true);
+        xhr.open("GET", address, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
     }
     function handleStateChange(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-            console.log("response: " + xhr.response);
+            document.getElementById("zusammenfassung").innerHTML = xhr.response;
         }
     }
-})(L06_SendData || (L06_SendData = {}));
+})(L07_SendData || (L07_SendData = {}));
 //# sourceMappingURL=sendData.js.map
