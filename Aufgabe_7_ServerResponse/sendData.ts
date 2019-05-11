@@ -29,7 +29,7 @@ namespace L07_SendData {
     function handleStateChange(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            document.getElementById("zusammenfassung").innerHTML= xhr.response;
+            document.getElementById("anhang").innerHTML= xhr.response;
         }
     }
 } 

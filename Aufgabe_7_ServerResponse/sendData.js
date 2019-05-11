@@ -25,7 +25,7 @@ var L07_SendData;
     function handleStateChange(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            document.getElementById("zusammenfassung").innerHTML = xhr.response;
+            document.getElementById("anhang").innerHTML = xhr.response;
         }
     }
 })(L07_SendData || (L07_SendData = {}));
