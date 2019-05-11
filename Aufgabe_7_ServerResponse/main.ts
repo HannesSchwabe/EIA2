@@ -102,7 +102,7 @@ namespace L07_AssocArraysAndExport {
 
                 let erstellen = document.createElement("p"); // Die Angaben werden im HTML neu generiert und an die Übersicht gahängt//
                 erstellen.innerHTML = `<p>
-            <p> ${input[i].name}</p>`
+                <p> ${input[i].className}</p>`
                 document.getElementById("Übersicht").appendChild(erstellen);
             }
             document.getElementById("preis").innerHTML = anfangsPreis.toFixed(2).toString();
