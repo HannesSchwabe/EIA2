@@ -1,14 +1,24 @@
 namespace DBClient {
     window.addEventListener("load", init);
-    let serverAddress: string = "http://localhost:8100/";
-    // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
+    //let serverAddress: string = "http://localhost:8100/";
+    let serverAddress: string = "https://schwabeh.herokuapp.com/";
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        let filterButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("filter");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        filterButton.addEventListener("click", filter);
+    }
+
+    function filter (_event: Event) {
+        let inputs: HTMLInputElement = <HTMLInputElement> document.getElementById("filterinput");
+        let query: string = "command=filter";
+        
+        query += "&matrikel=" + inputs.value;
+        sendRequest(query, handleFindResponse);
     }
 
     function insert(_event: Event): void {
@@ -45,8 +55,8 @@ namespace DBClient {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
             output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            //let responseAsJson: JSON = JSON.parse(xhr.response);
+            //console.log(responseAsJson);
         }
     }
 }

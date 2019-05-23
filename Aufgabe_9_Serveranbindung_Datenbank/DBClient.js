@@ -1,14 +1,22 @@
 var DBClient;
 (function (DBClient) {
     window.addEventListener("load", init);
-    let serverAddress = "http://localhost:8100/";
-    // let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
+    //let serverAddress: string = "http://localhost:8100/";
+    let serverAddress = "https://schwabeh.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let filterButton = document.getElementById("filter");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        filterButton.addEventListener("click", filter);
+    }
+    function filter(_event) {
+        let inputs = document.getElementById("filterinput");
+        let query = "command=filter";
+        query += "&matrikel=" + inputs.value;
+        sendRequest(query, handleFindResponse);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -40,8 +48,8 @@ var DBClient;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output = document.getElementsByTagName("textarea")[0];
             output.value = xhr.response;
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            //let responseAsJson: JSON = JSON.parse(xhr.response);
+            //console.log(responseAsJson);
         }
     }
 })(DBClient || (DBClient = {}));

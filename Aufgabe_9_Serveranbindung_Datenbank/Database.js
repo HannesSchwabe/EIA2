@@ -14,8 +14,8 @@ let students;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     // databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
-    databaseName = "eia2";
+    databaseURL = "mongodb+srv://Hannes:testPW90@eia2-0xium.mongodb.net/EIA2";
+    databaseName = "Studenten";
 }
 // try to connect to database, then activate callback "handleConnect" 
 Mongo.MongoClient.connect(databaseURL, { connectTimeoutMS: 8000 }, handleConnect);
@@ -55,4 +55,15 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
+function findMatrikel(_definedMatrikel, _callback) {
+    let cursor = students.find({ "matrikel": _definedMatrikel });
+    cursor.toArray(prepareAnswer);
+    function prepareAnswer(_e, studentArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else
+            _callback(JSON.stringify(studentArray));
+    }
+}
+exports.findMatrikel = findMatrikel;
 //# sourceMappingURL=Database.js.map
