@@ -20,15 +20,15 @@ namespace L11 {
         drawsand(x, y);
         //Stone
         for (let i: number = 0; i < 2; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = canvas.height;
+            let x: number = Math.random() * canvas.width - 200;
+            let y: number = canvas.height - 50;
             drawstone(x, y);
         }
 
         //Plant
         for (let i: number = 0; i < 5; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
+            let x: number = Math.random() * canvas.width - 80;
+            let y: number = canvas.height - 450;
             drawplants(x, y);
         }
 
@@ -37,7 +37,7 @@ namespace L11 {
             let bubble: Bubble = new Bubble();
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            bubble.draw(x, y);
+            //bubble.draw(x, y);
             bubbleArray.push(bubble);
         }
 
@@ -46,8 +46,8 @@ namespace L11 {
         for (let i: number = 0; i < 10; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            let dx: number = Math.random() * 10 - 5;
-            let dy: number = Math.random() * 10 - 5;
+            let dx: number = -4 + -2;
+            let dy: number = Math.random() * - 1;
             let fish: Fish;
             fish = new Fish();
             fish.x = x;
@@ -61,8 +61,8 @@ namespace L11 {
         for (let i: number = 0; i < 10; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            let dx: number = Math.random() * 10 - 5;
-            let dy: number = Math.random() * 10 - 5;
+            let dx: number = 8 - 5;
+            let dy: number = Math.random() * -1;
             let secondfish: SecondFish;
             secondfish = new SecondFish();
             secondfish.x = x;
@@ -76,16 +76,16 @@ namespace L11 {
         for (let i: number = 0; i < 100; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            let dx: number = Math.random() * 10 - 5;
-            let dy: number = Math.random() * 10 - 5;
+            let dx: number = 0;
+            let dy: number = -Math.random();
             let bubble: Bubble;
             bubble = new Bubble();
             bubble.x = x;
             bubble.y = y;
             bubble.dx = dx;
             bubble.dy = dy;
-            secondfishArray.push(bubble);
-            bubble.draw(x, y);
+            bubbleArray.push(bubble);
+            //bubble.draw(x, y);
         }
 
         update();

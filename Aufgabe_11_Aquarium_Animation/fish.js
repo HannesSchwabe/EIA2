@@ -5,7 +5,7 @@ var L11;
         draw(_x, _y) {
             let fish = new Path2D();
             fish.arc(_x, _y, 30, 0, 360);
-            L11.crc.fillStyle = "orange";
+            L11.crc.fillStyle = "black";
             L11.crc.fill(fish);
             L11.crc.stroke(fish);
             let fish1 = new Path2D();
@@ -22,26 +22,6 @@ var L11;
             L11.crc.fill(fishmachtauge);
             L11.crc.stroke(fishmachtauge);
         }
-        newMove(_x, _y) {
-            let fish = new Path2D();
-            fish.arc(_x + 200, _y + 200, 30, 0, 360);
-            L11.crc.fillStyle = "orange";
-            L11.crc.fill(fish);
-            L11.crc.stroke(fish);
-            let fish1 = new Path2D();
-            fish1.moveTo(_x + 230, _y + 200);
-            fish1.lineTo(_x + 270, _y + 240);
-            fish1.lineTo(_x + 270, _y + 160);
-            fish1.closePath();
-            L11.crc.fillStyle = "orange";
-            L11.crc.fill(fish1);
-            L11.crc.stroke(fish1);
-            let fishmachtauge = new Path2D();
-            fishmachtauge.arc(_x + 190, _y + 190, 5, 0, 360);
-            L11.crc.fillStyle = "white";
-            L11.crc.fill(fishmachtauge);
-            L11.crc.stroke(fishmachtauge);
-        }
         update() {
             this.move();
             this.draw(this.x, this.y);
@@ -50,11 +30,10 @@ var L11;
             this.x += this.dx;
             this.y += this.dy;
             if (this.x > L11.canvas.width || this.x < 0 || this.y > L11.canvas.height || this.y < 0) {
-                //fish.newMove(x, y);
                 //update();
                 console.log("Raus");
-                this.x = L11.canvas.width / 2;
-                this.y = L11.canvas.height / 2;
+                this.x = 1000;
+                this.y = Math.random() * L11.canvas.height;
             }
         }
     }

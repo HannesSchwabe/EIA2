@@ -15,14 +15,14 @@ var L11;
         drawsand(x, y);
         //Stone
         for (let i = 0; i < 2; i++) {
-            let x = Math.random() * L11.canvas.width;
-            let y = L11.canvas.height;
+            let x = Math.random() * L11.canvas.width - 200;
+            let y = L11.canvas.height - 50;
             drawstone(x, y);
         }
         //Plant
         for (let i = 0; i < 5; i++) {
-            let x = Math.random() * L11.canvas.width;
-            let y = Math.random() * L11.canvas.height;
+            let x = Math.random() * L11.canvas.width - 80;
+            let y = L11.canvas.height - 450;
             drawplants(x, y);
         }
         //Bubble
@@ -30,15 +30,15 @@ var L11;
             let bubble = new L11.Bubble();
             let x = Math.random() * L11.canvas.width;
             let y = Math.random() * L11.canvas.height;
-            bubble.draw(x, y);
+            //bubble.draw(x, y);
             bubbleArray.push(bubble);
         }
         imageData = L11.crc.getImageData(0, 0, L11.canvas.width, L11.canvas.height);
         for (let i = 0; i < 10; i++) {
             let x = Math.random() * L11.canvas.width;
             let y = Math.random() * L11.canvas.height;
-            let dx = Math.random() * 10 - 5;
-            let dy = Math.random() * 10 - 5;
+            let dx = -4 + -2;
+            let dy = Math.random() * -1;
             let fish;
             fish = new L11.Fish();
             fish.x = x;
@@ -51,8 +51,8 @@ var L11;
         for (let i = 0; i < 10; i++) {
             let x = Math.random() * L11.canvas.width;
             let y = Math.random() * L11.canvas.height;
-            let dx = Math.random() * 10 - 5;
-            let dy = Math.random() * 10 - 5;
+            let dx = 8 - 5;
+            let dy = Math.random() * -1;
             let secondfish;
             secondfish = new L11.SecondFish();
             secondfish.x = x;
@@ -65,16 +65,16 @@ var L11;
         for (let i = 0; i < 100; i++) {
             let x = Math.random() * L11.canvas.width;
             let y = Math.random() * L11.canvas.height;
-            let dx = Math.random() * 10 - 5;
-            let dy = Math.random() * 10 - 5;
+            let dx = 0;
+            let dy = -Math.random();
             let bubble;
             bubble = new L11.Bubble();
             bubble.x = x;
             bubble.y = y;
             bubble.dx = dx;
             bubble.dy = dy;
-            secondfishArray.push(bubble);
-            bubble.draw(x, y);
+            bubbleArray.push(bubble);
+            //bubble.draw(x, y);
         }
         update();
         //Fish

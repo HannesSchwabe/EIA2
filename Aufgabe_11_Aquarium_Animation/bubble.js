@@ -14,6 +14,12 @@ var L11;
         move() {
             this.x += this.dx;
             this.y += this.dy;
+            if (this.x > L11.canvas.width || this.x < 0 || this.y > L11.canvas.height || this.y < 0) {
+                //update();
+                console.log("Raus");
+                this.x = Math.random() * 1000;
+                this.y = 600;
+            }
         }
     }
     L11.Bubble = Bubble;
