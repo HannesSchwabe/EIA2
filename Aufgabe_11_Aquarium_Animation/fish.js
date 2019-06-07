@@ -31,7 +31,7 @@ var L11;
             this.y += this.dy;
             if (this.x > L11.canvas.width || this.x < 0 || this.y > L11.canvas.height || this.y < 0) {
                 //update();
-                console.log("Raus");
+                console.log("Nix mehr Fisch");
                 this.x = 1000;
                 this.y = Math.random() * L11.canvas.height;
             }
