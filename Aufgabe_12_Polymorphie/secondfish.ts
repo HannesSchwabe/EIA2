@@ -9,7 +9,7 @@ namespace L12 {
             crc.fill(secondfish);
             crc.stroke(secondfish);
 
-            let flosse: Path2D = new Path2D();
+            let flosse: Path2D = new Path2D(); 
             flosse.moveTo(_x + 30, _y );
             flosse.lineTo(_x + 10, _y + 40);
             flosse.lineTo(_x + 10, _y - 40);

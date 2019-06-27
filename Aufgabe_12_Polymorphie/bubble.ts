@@ -7,7 +7,7 @@ namespace L12 {
             bubble.arc(_x, _y, 3, 0, 360);
             crc.strokeStyle = "white";
             crc.stroke(bubble);
-        }
+        } 
 
         update(): void {
             this.move();

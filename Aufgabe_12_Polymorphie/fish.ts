@@ -9,7 +9,7 @@ namespace L12 {
 
         
 
-		draw(_x: number, _y: number): void {
+		draw(_x: number, _y: number): void { 
         let fish: Path2D = new Path2D();
         fish.arc(_x , _y , 30, 0, 360);
         crc.fillStyle = "black";

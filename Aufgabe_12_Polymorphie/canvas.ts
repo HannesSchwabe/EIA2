@@ -8,7 +8,7 @@ namespace L12 {
 
     let fishArray: Fish[] = [];
     let bubbleArray: Bubble[] = [];
-    let secondfishArray: SecondFish[] = [];
+    let secondfishArray: SecondFish[] = []; 
 
     let fps: number = 30;
     let imageData: ImageData;
