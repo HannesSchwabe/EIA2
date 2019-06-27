@@ -1,31 +1,25 @@
-namespace Abschlussaufgabe {
-    export class ZeroFish {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
-
+namespace L12 {
+    //import { crc } from "./canvas";
+    export class SecondFish extends Fish {
 
         draw(_x: number, _y: number): void {
-            let zerofish: Path2D = new Path2D();
-            zerofish.rect(_x , _y - 25, 30, 15);
-            crc.fillStyle = "grey";
-            crc.fill(zerofish);
-            crc.stroke(zerofish);
-
+            let secondfish: Path2D = new Path2D();
+            secondfish.rect(_x + 10, _y -25, 80, 40);
+            crc.fillStyle = "red";
+            crc.fill(secondfish);
+            crc.stroke(secondfish);
 
             let flosse: Path2D = new Path2D();
-            flosse.moveTo(_x, _y - 20);
-            flosse.lineTo(_x - 25, _y - 5);
-            flosse.lineTo(_x - 25, _y - 35);
+            flosse.moveTo(_x + 30, _y );
+            flosse.lineTo(_x + 10, _y + 40);
+            flosse.lineTo(_x + 10, _y - 40);
             flosse.closePath();
-            crc.fillStyle = "grey";
+            crc.fillStyle = "red";
             crc.fill(flosse);
             crc.stroke(flosse);
 
             let fishmachtauge: Path2D = new Path2D();
-            fishmachtauge.arc(_x + 23, _y - 20, 3, 0, 360);
+            fishmachtauge.arc(_x + 75, _y - 10, 5, 0, 360);
             crc.fillStyle = "white";
             crc.fill(fishmachtauge);
             crc.stroke(fishmachtauge);
@@ -42,12 +36,13 @@ namespace Abschlussaufgabe {
             this.y += this.dy;
             if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
                 //update();
-                //console.log("Raus");
+                console.log("Raus");
                 this.x = 0;
-                this.y = Math.random() * 600;
+                this.y = Math.random() * canvas.height;
             }
         }
 
-
     }
+
+
 }

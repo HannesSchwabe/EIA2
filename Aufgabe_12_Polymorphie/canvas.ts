@@ -1,4 +1,4 @@
-namespace Abschlussaufgabe {
+namespace L12 {
     document.addEventListener("DOMContentLoaded", init);
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
@@ -9,9 +9,6 @@ namespace Abschlussaufgabe {
     let fishArray: Fish[] = [];
     let bubbleArray: Bubble[] = [];
     let secondfishArray: SecondFish[] = [];
-    let thirdfishArray: ThirdFish[] = [];
-    let fourthfishArray: FourthFish[] = [];
-    let zerofishArray: ZeroFish[] = [];
 
     let fps: number = 30;
     let imageData: ImageData;
@@ -46,10 +43,10 @@ namespace Abschlussaufgabe {
 
         imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
 
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 10; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            let dx: number = -8 + -2;
+            let dx: number = -4 + -2;
             let dy: number = Math.random() * - 1;
             let fish: Fish;
             fish = new Fish();
@@ -61,10 +58,10 @@ namespace Abschlussaufgabe {
             fish.draw(x, y);
         }
 
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 10; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
-            let dx: number = 11 - 5;
+            let dx: number = 8 - 5;
             let dy: number = Math.random() * -1;
             let secondfish: SecondFish;
             secondfish = new SecondFish();
@@ -76,52 +73,6 @@ namespace Abschlussaufgabe {
             secondfish.draw(x, y);
         }
 
-        for (let i: number = 0; i < 1; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = -4 + -2;
-            let dy: number = Math.random() * - 1
-            let thirdfish: ThirdFish;
-            thirdfish = new ThirdFish();
-            thirdfish.x = x;
-            thirdfish.y = y;
-            thirdfish.dx = dx;
-            thirdfish.dy = dy;
-            thirdfishArray.push(thirdfish);
-            thirdfish.draw(x, y);
-        }
-
-        for (let i: number = 0; i < 1; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = 15 - 5;
-            let dy: number = Math.random() * -1;
-            let fourthfish: FourthFish;
-            fourthfish = new FourthFish();
-            fourthfish.x = x;
-            fourthfish.y = y;
-            fourthfish.dx = dx;
-            fourthfish.dy = dy;
-            fourthfishArray.push(fourthfish);
-            fourthfish.draw(x, y);
-        }
-
-        for (let i: number = 0; i < 1; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = 25 - 5;
-            let dy: number = Math.random() * -5;
-            let zerofish: ZeroFish;
-            zerofish = new ZeroFish();
-            zerofish.x = x;
-            zerofish.y = y;
-            zerofish.dx = dx;
-            zerofish.dy = dy;
-            zerofishArray.push(zerofish);
-            zerofish.draw(x, y);
-        }
-
-        
         for (let i: number = 0; i < 100; i++) {
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
@@ -136,52 +87,28 @@ namespace Abschlussaufgabe {
             bubbleArray.push(bubble);
             //bubble.draw(x, y);
         }
-        
+
         update();
-        
+
         //Fish
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 10; i++) {
             let fish: Fish = new Fish();
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
+            fish.x = x;
+            fish.y = y;
             fish.draw(x, y);
             fishArray.push(fish);
+            console.log(fish.x);
         }
-        
+
         //SecondFish
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 5; i++) {
             let secondfish: SecondFish = new SecondFish();
             let x: number = Math.random() * canvas.width;
             let y: number = Math.random() * canvas.height;
             secondfish.draw(x, y);
             secondfishArray.push(secondfish);
-        }
-
-        //ThirdFish
-        for (let i: number = 0; i<1; i++) {
-            let thirdfish: ThirdFish = new ThirdFish();
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            thirdfish.draw(x, y);
-            thirdfishArray.push(thirdfish);
-        }
-
-        //FourthFish
-        for (let i: number = 0; i< 1; i++) {
-            let fourthfish: FourthFish = new FourthFish();
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            fourthfish.draw(x, y);
-            fourthfishArray.push(fourthfish);
-        }
-
-        //ZeroFish
-        for (let i: number = 0; i< 1; i++) {
-            let zerofish: ZeroFish = new ZeroFish();
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            zerofish.draw(x, y);
-            zerofishArray.push(zerofish);
         }
 
 
@@ -193,7 +120,7 @@ namespace Abschlussaufgabe {
         crc.putImageData(imageData, 0, 0);
 
         for (let i: number = 0; i < fishArray.length; i++) {
-            fishArray[i].updatee();
+            fishArray[i].update();
         }
 
 
@@ -204,21 +131,7 @@ namespace Abschlussaufgabe {
         for (let i: number = 0; i < bubbleArray.length; i++) {
             bubbleArray[i].update();
         }
-
-        for (let i: number = 0; i < thirdfishArray.length; i++) {
-            thirdfishArray[i].update();
-        }
-
-        for (let i: number = 0; i < fourthfishArray.length; i++) {
-            fourthfishArray[i].update();
-        }
-
-        for (let i: number = 0; i < zerofishArray.length; i++) {
-            zerofishArray[i].update();
-        }
     }
-
-    
 
     //Water
     function drawbackground(_x: number, _y: number): void {

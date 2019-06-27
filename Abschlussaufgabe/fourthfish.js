@@ -30,7 +30,7 @@ var Abschlussaufgabe;
             this.y += this.dy;
             if (this.x > Abschlussaufgabe.canvas.width || this.x < 0 || this.y > Abschlussaufgabe.canvas.height || this.y < 0) {
                 //update();
-                console.log("Raus");
+                //console.log("Raus");
                 this.x = 0;
                 this.y = Math.random() * 600;
             }

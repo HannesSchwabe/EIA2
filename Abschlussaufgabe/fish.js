@@ -22,7 +22,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc.fill(fishmachtauge);
             Abschlussaufgabe.crc.stroke(fishmachtauge);
         }
-        update() {
+        updatee() {
             this.move();
             this.draw(this.x, this.y);
         }
@@ -31,7 +31,7 @@ var Abschlussaufgabe;
             this.y += this.dy;
             if (this.x > Abschlussaufgabe.canvas.width || this.x < 0 || this.y > Abschlussaufgabe.canvas.height || this.y < 0) {
                 //update();
-                console.log("Nix mehr Fisch");
+                //console.log("Nix mehr Fisch");
                 this.x = 1000;
                 this.y = Math.random() * Abschlussaufgabe.canvas.height;
             }

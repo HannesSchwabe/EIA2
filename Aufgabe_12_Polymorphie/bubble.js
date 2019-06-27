@@ -1,11 +1,11 @@
-var Abschlussaufgabe;
-(function (Abschlussaufgabe) {
-    class Bubble {
+var L12;
+(function (L12) {
+    class Bubble extends L12.Fish {
         draw(_x, _y) {
             let bubble = new Path2D();
             bubble.arc(_x, _y, 3, 0, 360);
-            Abschlussaufgabe.crc.strokeStyle = "white";
-            Abschlussaufgabe.crc.stroke(bubble);
+            L12.crc.strokeStyle = "white";
+            L12.crc.stroke(bubble);
         }
         update() {
             this.move();
@@ -14,14 +14,14 @@ var Abschlussaufgabe;
         move() {
             this.x += this.dx;
             this.y += this.dy;
-            if (this.x > Abschlussaufgabe.canvas.width || this.x < 0 || this.y > Abschlussaufgabe.canvas.height || this.y < 0) {
+            if (this.x > L12.canvas.width || this.x < 0 || this.y > L12.canvas.height || this.y < 0) {
                 //update();
-                //console.log("Raus");
+                console.log("Raus");
                 this.x = Math.random() * 1000;
                 this.y = 600;
             }
         }
     }
-    Abschlussaufgabe.Bubble = Bubble;
-})(Abschlussaufgabe || (Abschlussaufgabe = {}));
+    L12.Bubble = Bubble;
+})(L12 || (L12 = {}));
 //# sourceMappingURL=bubble.js.map

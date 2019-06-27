@@ -1,11 +1,6 @@
-namespace Abschlussaufgabe {
+namespace L12 {
 
-    export class Bubble {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
+    export class Bubble extends Fish {
 
         draw(_x: number, _y: number): void {
             let bubble: Path2D = new Path2D();
@@ -24,7 +19,7 @@ namespace Abschlussaufgabe {
             this.y += this.dy;
             if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
                 //update();
-                //console.log("Raus");
+                console.log("Raus");
                 this.x = Math.random() * 1000;
                 this.y = 600;
             }

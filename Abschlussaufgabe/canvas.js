@@ -127,11 +127,8 @@ var Abschlussaufgabe;
             let fish = new Abschlussaufgabe.Fish();
             let x = Math.random() * Abschlussaufgabe.canvas.width;
             let y = Math.random() * Abschlussaufgabe.canvas.height;
-            fish.x = x;
-            fish.y = y;
             fish.draw(x, y);
             fishArray.push(fish);
-            console.log(fish.x);
         }
         //SecondFish
         for (let i = 0; i < 1; i++) {
@@ -171,7 +168,7 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc.clearRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc.putImageData(imageData, 0, 0);
         for (let i = 0; i < fishArray.length; i++) {
-            fishArray[i].update();
+            fishArray[i].updatee();
         }
         for (let i = 0; i < secondfishArray.length; i++) {
             secondfishArray[i].update();
