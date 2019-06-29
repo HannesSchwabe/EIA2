@@ -5,7 +5,7 @@ namespace L12 {
         draw(_x: number, _y: number): void {
             let bubble: Path2D = new Path2D();
             bubble.arc(_x, _y, 3, 0, 360);
-            crc.strokeStyle = "white";
+            crc.strokeStyle = "white";    
             crc.stroke(bubble);
         } 
 
