@@ -2,38 +2,44 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     //import { crc } from "./canvas";
     class Fish {
-        draw(_x, _y) {
+        constructor() {
+            this.x = Math.random() * Abschlussaufgabe.canvas.width;
+            this.y = Math.random() * Abschlussaufgabe.canvas.height;
+            this.dx = -8 + -2;
+            this.dy = Math.random() * -1;
+            this.a = 1;
+        }
+        draw() {
             let fish = new Path2D();
-            fish.arc(_x, _y, 15, 0, 360);
+            fish.arc(this.x, this.y, 15 * this.a, 0, 360);
             Abschlussaufgabe.crc.fillStyle = "red";
             Abschlussaufgabe.crc.fill(fish);
             Abschlussaufgabe.crc.stroke(fish);
-            let fish1 = new Path2D();
-            fish1.moveTo(_x + 14, _y);
-            fish1.lineTo(_x + 24, _y + 40);
-            fish1.lineTo(_x + 24, _y - 40);
-            fish1.closePath();
-            Abschlussaufgabe.crc.fillStyle = "red";
-            Abschlussaufgabe.crc.fill(fish1);
-            Abschlussaufgabe.crc.stroke(fish1);
             let fishmachtauge = new Path2D();
-            fishmachtauge.arc(_x - 5, _y - 5, 4, 0, 360);
+            fishmachtauge.arc(this.x - 5, this.y - 5, 4 * this.a, 0, 360);
             Abschlussaufgabe.crc.fillStyle = "white";
             Abschlussaufgabe.crc.fill(fishmachtauge);
             Abschlussaufgabe.crc.stroke(fishmachtauge);
         }
-        updatee() {
-            this.move();
-            this.draw(this.x, this.y);
+        update(_x, _y, _s) {
+            this.move(_x, _y, _s);
+            this.draw();
         }
-        move() {
-            this.x += this.dx;
-            this.y += this.dy;
-            if (this.x > Abschlussaufgabe.canvas.width || this.x < 0 || this.y > Abschlussaufgabe.canvas.height || this.y < 0) {
-                //update();
-                //console.log("Nix mehr Fisch");
+        move(_x, _y, _s) {
+            this.x += _x;
+            this.y += _y;
+            this.a = this.a * _s;
+            if (this.x > Abschlussaufgabe.canvas.width) {
+                this.x = 0;
+            }
+            if (this.x < 0) {
                 this.x = 1000;
-                this.y = Math.random() * Abschlussaufgabe.canvas.height;
+            }
+            if (this.y > Abschlussaufgabe.canvas.height) {
+                this.y = 0;
+            }
+            if (this.y < 0) {
+                this.y = 600;
             }
         }
     }

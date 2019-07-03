@@ -6,6 +6,12 @@ namespace Abschlussaufgabe {
         dy: number;
         color: string;
 
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.dx = -10;
+            this.dy = Math.random() * -1;
+        }
 
         draw(_x: number, _y: number): void {
             let thirdfish: Path2D = new Path2D();
@@ -31,7 +37,6 @@ namespace Abschlussaufgabe {
             crc.stroke(fishmachtauge);
         }
 
-
         update(): void {
             this.move();
             this.draw(this.x, this.y);
@@ -47,6 +52,8 @@ namespace Abschlussaufgabe {
                 this.y = Math.random() * 600;
             }
         }
+
+        
 
 
     }

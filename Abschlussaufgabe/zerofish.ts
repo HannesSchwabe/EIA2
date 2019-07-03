@@ -6,35 +6,45 @@ namespace Abschlussaufgabe {
         dy: number;
         color: string;
 
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.dx = 25 - 5;
+            this.dy = Math.random() * -5;
+        }
+
+
 
         draw(_x: number, _y: number): void {
             let zerofish: Path2D = new Path2D();
-            zerofish.rect(_x , _y - 25, 30, 15);
+            zerofish.rect(this.x , this.y - 25, 30, 15);
+            zerofish.closePath();
             crc.fillStyle = "grey";
             crc.fill(zerofish);
             crc.stroke(zerofish);
 
-
             let flosse: Path2D = new Path2D();
-            flosse.moveTo(_x, _y - 20);
-            flosse.lineTo(_x - 25, _y - 5);
-            flosse.lineTo(_x - 25, _y - 35);
+            flosse.moveTo(this.x, this.y - 20);
+            flosse.lineTo(this.x - 25, this.y - 5);
+            flosse.lineTo(this.x - 25, this.y - 35);
             flosse.closePath();
             crc.fillStyle = "grey";
             crc.fill(flosse);
             crc.stroke(flosse);
 
             let fishmachtauge: Path2D = new Path2D();
-            fishmachtauge.arc(_x + 23, _y - 20, 3, 0, 360);
+            fishmachtauge.arc(this.x + 23, this.y - 20, 3, 0, 360);
             crc.fillStyle = "white";
             crc.fill(fishmachtauge);
             crc.stroke(fishmachtauge);
+
+            pfadgottes(zerofish, _x, _y);
         }
 
 
-        update(): void {
+        update(_x: number, _y: number): void {
             this.move();
-            this.draw(this.x, this.y);
+            this.draw(_x, _y);
         }
 
         move(): void {

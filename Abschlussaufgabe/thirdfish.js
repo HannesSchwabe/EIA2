@@ -1,6 +1,12 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class ThirdFish {
+        constructor() {
+            this.x = Math.random() * Abschlussaufgabe.canvas.width;
+            this.y = Math.random() * Abschlussaufgabe.canvas.height;
+            this.dx = -10;
+            this.dy = Math.random() * -1;
+        }
         draw(_x, _y) {
             let thirdfish = new Path2D();
             thirdfish.rect(_x + 10, _y - 25, 100, 60);

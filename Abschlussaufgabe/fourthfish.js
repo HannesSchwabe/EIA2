@@ -1,6 +1,12 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class FourthFish {
+        constructor() {
+            this.x = Math.random() * Abschlussaufgabe.canvas.width;
+            this.y = Math.random() * Abschlussaufgabe.canvas.height;
+            this.dx = 15 - 5;
+            this.dy = Math.random() * -1;
+        }
         draw(_x, _y) {
             let fourthfish = new Path2D();
             fourthfish.rect(_x, _y - 25, 130, 90);

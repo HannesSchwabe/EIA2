@@ -6,10 +6,17 @@ namespace Abschlussaufgabe {
         dy: number;
         color: string;
 
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.dx = 15 - 5;
+            this.dy = Math.random() * -1;
+        }
+
 
         draw(_x: number, _y: number): void {
             let fourthfish: Path2D = new Path2D();
-            fourthfish.rect(_x , _y - 25, 130, 90);
+            fourthfish.rect(_x, _y - 25, 130, 90);
             crc.fillStyle = "black";
             crc.fill(fourthfish);
             crc.stroke(fourthfish);
