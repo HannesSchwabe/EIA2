@@ -10,7 +10,7 @@ namespace Abschlussaufgabe {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.dx = 15 - 5;
+            this.dx = 25 - 5;
             this.dy = Math.random() * -1;
         }
 
