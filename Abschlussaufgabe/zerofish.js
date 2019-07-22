@@ -2,6 +2,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class ZeroFish {
         constructor() {
+            this.id = 0;
             this.x = Math.random() * Abschlussaufgabe.canvas.width;
             this.y = Math.random() * Abschlussaufgabe.canvas.height;
             this.dx = 25 - 5;
@@ -27,7 +28,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc.fillStyle = "white";
             Abschlussaufgabe.crc.fill(fishmachtauge);
             Abschlussaufgabe.crc.stroke(fishmachtauge);
-            Abschlussaufgabe.pfadgottes(zerofish, _x, _y);
+            Abschlussaufgabe.pfadgottes(zerofish, _x, _y, this.id);
         }
         update(_x, _y) {
             this.move();

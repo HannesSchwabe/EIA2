@@ -2,6 +2,7 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class FourthFish {
         constructor() {
+            this.id = 4;
             this.x = Math.random() * Abschlussaufgabe.canvas.width;
             this.y = Math.random() * Abschlussaufgabe.canvas.height;
             this.dx = 15 - 5;
@@ -9,27 +10,28 @@ var Abschlussaufgabe;
         }
         draw(_x, _y) {
             let fourthfish = new Path2D();
-            fourthfish.rect(_x, _y - 25, 130, 90);
+            fourthfish.rect(this.x, this.y - 25, 130, 90);
             Abschlussaufgabe.crc.fillStyle = "black";
             Abschlussaufgabe.crc.fill(fourthfish);
             Abschlussaufgabe.crc.stroke(fourthfish);
             let flosse = new Path2D();
-            flosse.moveTo(_x + 20, _y + 10);
-            flosse.lineTo(_x - 10, _y + 70);
-            flosse.lineTo(_x - 10, _y - 60);
+            flosse.moveTo(this.x + 20, this.y + 10);
+            flosse.lineTo(this.x - 10, this.y + 70);
+            flosse.lineTo(this.x - 10, this.y - 60);
             flosse.closePath();
             Abschlussaufgabe.crc.fillStyle = "black";
             Abschlussaufgabe.crc.fill(flosse);
             Abschlussaufgabe.crc.stroke(flosse);
             let fishmachtauge = new Path2D();
-            fishmachtauge.arc(_x + 100, _y - 10, 8, 0, 360);
+            fishmachtauge.arc(this.x + 100, this.y - 10, 8, 0, 360);
             Abschlussaufgabe.crc.fillStyle = "white";
             Abschlussaufgabe.crc.fill(fishmachtauge);
             Abschlussaufgabe.crc.stroke(fishmachtauge);
+            Abschlussaufgabe.pfadgottes(fourthfish, _x, _y, this.id);
         }
-        update() {
+        update(_x, _y) {
             this.move();
-            this.draw(this.x, this.y);
+            this.draw(_x, _y);
         }
         move() {
             this.x += this.dx;

@@ -1,9 +1,11 @@
 namespace Abschlussaufgabe {
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
+    let serverAddress: string = "https://schwabeh.herokuapp.com/";
     export let crc: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-
+    
+    let score: number = 0;
     let x: number;
     let y: number;
 
@@ -13,6 +15,7 @@ namespace Abschlussaufgabe {
     let thirdfishArray: ThirdFish[] = [];
     let fourthfishArray: FourthFish[] = [];
     let zerofishArray: ZeroFish[] = [];
+    let FabianFischMachtAAPause: boolean = false;
 
     let fps: number = 30;
     let imageData: ImageData;
@@ -31,14 +34,61 @@ namespace Abschlussaufgabe {
             fishArray[0].update(0, 20, 1);
         }
     }
-    
-    export function pfadgottes(pfad: Path2D, _x: number, _y: number) {
-        if (crc.isPointInPath(pfad,_x, _y) == true) {
-            console.log("RRRRaus du dumme Sau, ich schwör ich fick disch amenakoi!!!");
+
+    export function pfadgottes(pfad: Path2D, _x: number, _y: number, _id: number) {
+        if (crc.isPointInPath(pfad, _x, _y) == true && _id == 0) {
+            console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 2);
+            zerofishArray.splice(0, 1);
+            MakeFabianFishRichAgain()
+        }
+        if (crc.isPointInPath(pfad, _x, _y) == true && _id == 2) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.5);
+            secondfishArray.splice(0, 1);
+            MakeFabianFishRichAgain()
+        }
+        if (crc.isPointInPath(pfad, _x, _y) == true && _id == 3) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.33);
+            thirdfishArray.splice(0, 1);
+            MakeFabianFishRichAgain()
+        }
+        if (crc.isPointInPath(pfad, _x, _y) == true && _id == 4) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.25);
+            fourthfishArray.splice(0, 1);
+            MakeFabianFishRichAgain()
         }
     }
-    
+
+    function MakeFabianFishRichAgain() {
+        score += 1000;
+        document.getElementById("idScore").innerHTML = score.toString();
+    }
+
+    function FabianFishNixMehrBlubb() {
+        let gamertag: string = prompt("Verrate FabianFish Deinen Namen, du Plankton!");
+        console.log(gamertag);
+        insert(gamertag);
+        find();
+    }
+
     function init(): void {
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
@@ -50,14 +100,14 @@ namespace Abschlussaufgabe {
             let y: number = canvas.height - 50;
             drawstone(x, y);
         }
-        
+
         //Plant
         for (let i: number = 0; i < 5; i++) {
             let x: number = Math.random() * canvas.width - 80;
             let y: number = canvas.height - 450;
             drawplants(x, y);
         }
-        
+
         //Bubble
         for (let i: number = 0; i < 100; i++) {
             let bubble: Bubble = new Bubble();
@@ -68,25 +118,16 @@ namespace Abschlussaufgabe {
         }
 
         imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
-        
+
         //STEUERUNGSFISCH
         for (let i: number = 0; i < 1; i++) {
             let fish: Fish = new Fish();
             fishArray.push(fish);
             fish.draw();
         }
-        
+
         for (let i: number = 0; i < 1; i++) {
-            let x: number = Math.random() * canvas.width;
-            let y: number = Math.random() * canvas.height;
-            let dx: number = 11 - 5;
-            let dy: number = Math.random() * -1;
-            let secondfish: SecondFish;
-            secondfish = new SecondFish();
-            secondfish.x = x;
-            secondfish.y = y;
-            secondfish.dx = dx;
-            secondfish.dy = dy;
+            let secondfish: SecondFish = new SecondFish();
             secondfishArray.push(secondfish);
             secondfish.draw(x, y);
         }
@@ -129,34 +170,37 @@ namespace Abschlussaufgabe {
     }
 
     function update(): void {
-        window.setTimeout(update, 1000 / fps);
-        crc.clearRect(0, 0, canvas.width, canvas.height);
-        crc.putImageData(imageData, 0, 0);
+        if (FabianFischMachtAAPause == false) {
+
+            window.setTimeout(update, 1000 / fps);
+            crc.clearRect(0, 0, canvas.width, canvas.height);
+            crc.putImageData(imageData, 0, 0);
 
 
-        for (let i: number = 0; i < fishArray.length; i++) {
-            fishArray[i].update(0, 0, 1);
-        }
+            for (let i: number = 0; i < fishArray.length; i++) {
+                fishArray[i].update(0, 0, 1);
+            }
 
 
-        for (let i: number = 0; i < secondfishArray.length; i++) {
-            secondfishArray[i].update();
-        }
+            for (let i: number = 0; i < secondfishArray.length; i++) {
+                secondfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
 
-        for (let i: number = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].update();
-        }
+            for (let i: number = 0; i < bubbleArray.length; i++) {
+                bubbleArray[i].update();
+            }
 
-        for (let i: number = 0; i < thirdfishArray.length; i++) {
-            thirdfishArray[i].update();
-        }
+            for (let i: number = 0; i < thirdfishArray.length; i++) {
+                thirdfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
 
-        for (let i: number = 0; i < fourthfishArray.length; i++) {
-            fourthfishArray[i].update();
-        }
+            for (let i: number = 0; i < fourthfishArray.length; i++) {
+                fourthfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
 
-        for (let i: number = 0; i < zerofishArray.length; i++) {
-            zerofishArray[i].update(fishArray[0].x, fishArray[0].y);
+            for (let i: number = 0; i < zerofishArray.length; i++) {
+                zerofishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
         }
     }
 
@@ -203,5 +247,42 @@ namespace Abschlussaufgabe {
     }
     //fish.x > canvas.width && fish.x <= 0 && fish.y > canvas.height && fish.y <= 0
 
-    
+    function insert(_name: string): void {
+        let query: string = "command=insert";
+        query += "&name=" + _name;
+        query += "&score" + score;
+        console.log(query);
+        sendRequest(query, handleInsertResponse);
+    }
+
+    function sendRequest (_query: string; _callback: EventListener): void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open("GET", serverAddress + "?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
+        xhr.send();
+    }
+
+    function handleInsertResponse (_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
+    }
+
+    function find(): void {
+        let query: string = "command=find";
+        sendRequest(query, handleFindResponse);
+    }
+
+    function handleFindResponse (_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let Spielerliste: Player[] = JSON.parse(xhr.response);
+            for (let i:number = 0; i <= Spielerliste.length; i++) {
+                let Spielername: string = Spielerliste[i].name;
+                let Spielerscore: string = Spielerliste[i].score;
+                document.getElementById("output").innerHTML = "Name: " + Spielername + "Score: " + Spielerscore;
+            }
+        }
+    }
 }

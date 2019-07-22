@@ -5,6 +5,7 @@ namespace Abschlussaufgabe {
         dx: number;
         dy: number;
         color: string;
+        id: number = 0;
 
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -38,7 +39,7 @@ namespace Abschlussaufgabe {
             crc.fill(fishmachtauge);
             crc.stroke(fishmachtauge);
 
-            pfadgottes(zerofish, _x, _y);
+            pfadgottes(zerofish, _x, _y, this.id);
         }
 
 

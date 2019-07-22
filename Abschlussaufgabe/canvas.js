@@ -2,6 +2,8 @@ var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("keydown", steuerung);
+    let serverAddress = "https://schwabeh.herokuapp.com/";
+    let score = 0;
     let x;
     let y;
     let fishArray = [];
@@ -10,6 +12,7 @@ var Abschlussaufgabe;
     let thirdfishArray = [];
     let fourthfishArray = [];
     let zerofishArray = [];
+    let FabianFischMachtAAPause = false;
     let fps = 30;
     let imageData;
     function steuerung(_event) {
@@ -26,13 +29,58 @@ var Abschlussaufgabe;
             fishArray[0].update(0, 20, 1);
         }
     }
-    function pfadgottes(pfad, _x, _y) {
-        if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true) {
-            console.log("RRRRaus du dumme Sau, ich schwör ich fick disch amenakoi!!!");
+    function pfadgottes(pfad, _x, _y, _id) {
+        if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 0) {
+            console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 2);
+            zerofishArray.splice(0, 1);
+            MakeFabianFishRichAgain();
+        }
+        if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 2) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.5);
+            secondfishArray.splice(0, 1);
+            MakeFabianFishRichAgain();
+        }
+        if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 3) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.33);
+            thirdfishArray.splice(0, 1);
+            MakeFabianFishRichAgain();
+        }
+        if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 4) {
+            if (fishArray[0].a < _id) {
+                console.log("Game over!");
+                FabianFischMachtAAPause = true;
+                FabianFishNixMehrBlubb();
+            }
+            console.log("RRRRaus du dumme Sau!!!");
+            fishArray[0].update(0, 0, 1.25);
+            fourthfishArray.splice(0, 1);
+            MakeFabianFishRichAgain();
         }
     }
     Abschlussaufgabe.pfadgottes = pfadgottes;
+    function MakeFabianFishRichAgain() {
+        score += 1000;
+        document.getElementById("idScore").innerHTML = score.toString();
+    }
+    function FabianFishNixMehrBlubb() {
+        let gamertag = prompt("Verrate FabianFish Deinen Namen, du Plankton!");
+        console.log(gamertag);
+        insert(gamertag);
+        find();
+    }
     function init() {
         Abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.crc = Abschlussaufgabe.canvas.getContext("2d");
@@ -66,16 +114,7 @@ var Abschlussaufgabe;
             fish.draw();
         }
         for (let i = 0; i < 1; i++) {
-            let x = Math.random() * Abschlussaufgabe.canvas.width;
-            let y = Math.random() * Abschlussaufgabe.canvas.height;
-            let dx = 11 - 5;
-            let dy = Math.random() * -1;
-            let secondfish;
-            secondfish = new Abschlussaufgabe.SecondFish();
-            secondfish.x = x;
-            secondfish.y = y;
-            secondfish.dx = dx;
-            secondfish.dy = dy;
+            let secondfish = new Abschlussaufgabe.SecondFish();
             secondfishArray.push(secondfish);
             secondfish.draw(x, y);
         }
@@ -111,26 +150,28 @@ var Abschlussaufgabe;
         update();
     }
     function update() {
-        window.setTimeout(update, 1000 / fps);
-        Abschlussaufgabe.crc.clearRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
-        Abschlussaufgabe.crc.putImageData(imageData, 0, 0);
-        for (let i = 0; i < fishArray.length; i++) {
-            fishArray[i].update(0, 0, 1);
-        }
-        for (let i = 0; i < secondfishArray.length; i++) {
-            secondfishArray[i].update();
-        }
-        for (let i = 0; i < bubbleArray.length; i++) {
-            bubbleArray[i].update();
-        }
-        for (let i = 0; i < thirdfishArray.length; i++) {
-            thirdfishArray[i].update();
-        }
-        for (let i = 0; i < fourthfishArray.length; i++) {
-            fourthfishArray[i].update();
-        }
-        for (let i = 0; i < zerofishArray.length; i++) {
-            zerofishArray[i].update(fishArray[0].x, fishArray[0].y);
+        if (FabianFischMachtAAPause == false) {
+            window.setTimeout(update, 1000 / fps);
+            Abschlussaufgabe.crc.clearRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
+            Abschlussaufgabe.crc.putImageData(imageData, 0, 0);
+            for (let i = 0; i < fishArray.length; i++) {
+                fishArray[i].update(0, 0, 1);
+            }
+            for (let i = 0; i < secondfishArray.length; i++) {
+                secondfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
+            for (let i = 0; i < bubbleArray.length; i++) {
+                bubbleArray[i].update();
+            }
+            for (let i = 0; i < thirdfishArray.length; i++) {
+                thirdfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
+            for (let i = 0; i < fourthfishArray.length; i++) {
+                fourthfishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
+            for (let i = 0; i < zerofishArray.length; i++) {
+                zerofishArray[i].update(fishArray[0].x, fishArray[0].y);
+            }
         }
     }
     //Water
@@ -166,5 +207,39 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc.stroke(plant);
     }
     //fish.x > canvas.width && fish.x <= 0 && fish.y > canvas.height && fish.y <= 0
+    function insert(_name) {
+        let query = "command=insert";
+        query += "&name=" + _name;
+        query += "&score" + score;
+        console.log(query);
+        sendRequest(query, handleInsertResponse);
+    }
+    function sendRequest(_query, _callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", serverAddress + "?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
+        xhr.send();
+    }
+    function handleInsertResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
+    }
+    function find() {
+        let query = "command=find";
+        sendRequest(query, handleFindResponse);
+    }
+    function handleFindResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let Spielerliste = JSON.parse(xhr.response);
+            for (let i = 0; i <= Spielerliste.length; i++) {
+                let Spielername = Spielerliste[i].name;
+                let Spielerscore = Spielerliste[i].score;
+                document.getElementById("output").innerHTML = "Name: " + Spielername + "Score: " + Spielerscore;
+            }
+        }
+    }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=canvas.js.map

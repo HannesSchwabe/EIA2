@@ -5,6 +5,7 @@ namespace Abschlussaufgabe {
         dx: number;
         dy: number;
         color: string;
+        id: number = 4;
 
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -16,32 +17,35 @@ namespace Abschlussaufgabe {
 
         draw(_x: number, _y: number): void {
             let fourthfish: Path2D = new Path2D();
-            fourthfish.rect(_x, _y - 25, 130, 90);
+            fourthfish.rect(this.x, this.y - 25, 130, 90);
             crc.fillStyle = "black";
             crc.fill(fourthfish);
             crc.stroke(fourthfish);
 
 
             let flosse: Path2D = new Path2D();
-            flosse.moveTo(_x + 20, _y + 10);
-            flosse.lineTo(_x - 10, _y + 70);
-            flosse.lineTo(_x - 10, _y - 60);
+            flosse.moveTo(this.x + 20, this.y + 10);
+            flosse.lineTo(this.x - 10, this.y + 70);
+            flosse.lineTo(this.x - 10, this.y - 60);
             flosse.closePath();
             crc.fillStyle = "black";
             crc.fill(flosse);
             crc.stroke(flosse);
 
             let fishmachtauge: Path2D = new Path2D();
-            fishmachtauge.arc(_x + 100, _y - 10, 8, 0, 360);
+            fishmachtauge.arc(this.x + 100, this.y - 10, 8, 0, 360);
             crc.fillStyle = "white";
             crc.fill(fishmachtauge);
             crc.stroke(fishmachtauge);
+            
+            pfadgottes(fourthfish, _x, _y, this.id);
+
         }
 
 
-        update(): void {
+        update(_x: number, _y: number): void {
             this.move();
-            this.draw(this.x, this.y);
+            this.draw(_x, _y);
         }
 
         move(): void {
