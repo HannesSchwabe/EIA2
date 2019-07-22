@@ -255,7 +255,7 @@ namespace Abschlussaufgabe {
         sendRequest(query, handleInsertResponse);
     }
 
-    function sendRequest (_query: string; _callback: EventListener): void {
+    function sendRequest (_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
