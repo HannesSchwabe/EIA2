@@ -1,3 +1,4 @@
+
 interface AssocStringString {
     [key: string]: string;
 }
