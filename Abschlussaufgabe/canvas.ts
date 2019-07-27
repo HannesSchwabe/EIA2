@@ -40,7 +40,9 @@ namespace Abschlussaufgabe {
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 2);
             zerofishArray.splice(0, 1);
-            MakeFabianFishRichAgain()
+            //MakeFabianFishRichAgain()
+            score += 1;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (crc.isPointInPath(pfad, _x, _y) == true && _id == 2) {
             if (fishArray[0].a < _id) {
@@ -51,7 +53,9 @@ namespace Abschlussaufgabe {
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 1.5);
             secondfishArray.splice(0, 1);
-            MakeFabianFishRichAgain()
+            //MakeFabianFishRichAgain()
+            score += 2;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (crc.isPointInPath(pfad, _x, _y) == true && _id == 3) {
             if (fishArray[0].a < _id) {
@@ -62,7 +66,9 @@ namespace Abschlussaufgabe {
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 1.33);
             thirdfishArray.splice(0, 1);
-            MakeFabianFishRichAgain()
+            //MakeFabianFishRichAgain()
+            score += 3;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (crc.isPointInPath(pfad, _x, _y) == true && _id == 4) {
             if (fishArray[0].a < _id) {
@@ -70,17 +76,14 @@ namespace Abschlussaufgabe {
                 FabianFischMachtAAPause = true;
                 FabianFishNixMehrBlubb();
             }
-            console.log("RRRRaus du dumme Sau!!!");
-            fishArray[0].update(0, 0, 1.25);
-            fourthfishArray.splice(0, 1);
-            MakeFabianFishRichAgain()
+            //console.log("RRRRaus du dumme Sau!!!");
+            //fishArray[0].update(0, 0, 1.25);
+            //fourthfishArray.splice(0, 1);
+            //MakeFabianFishRichAgain()
         }
     }
 
-    function MakeFabianFishRichAgain() {
-        score += 1000;
-        document.getElementById("idScore").innerHTML = score.toString();
-    }
+   
 
     function FabianFishNixMehrBlubb() {
         let gamertag: string = prompt("Verrate FabianFish Deinen Namen, du Plankton!");
@@ -138,7 +141,7 @@ namespace Abschlussaufgabe {
             thirdfish.draw(x, y);
         }
 
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 5; i++) {
             let fourthfish: FourthFish = new FourthFish();
             fourthfishArray.push(fourthfish);
             fourthfish.draw(x, y);

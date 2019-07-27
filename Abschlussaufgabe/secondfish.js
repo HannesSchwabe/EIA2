@@ -6,7 +6,7 @@ var Abschlussaufgabe;
             this.id = 2;
             this.x = Math.random() * Abschlussaufgabe.canvas.width;
             this.y = Math.random() * Abschlussaufgabe.canvas.height;
-            this.dx = 11 - 5;
+            this.dx = 16 - 5;
             this.dy = Math.random() * -1;
         }
         draw(_x, _y) {

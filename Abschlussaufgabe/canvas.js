@@ -34,7 +34,9 @@ var Abschlussaufgabe;
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 2);
             zerofishArray.splice(0, 1);
-            MakeFabianFishRichAgain();
+            //MakeFabianFishRichAgain()
+            score += 1;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 2) {
             if (fishArray[0].a < _id) {
@@ -45,7 +47,9 @@ var Abschlussaufgabe;
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 1.5);
             secondfishArray.splice(0, 1);
-            MakeFabianFishRichAgain();
+            //MakeFabianFishRichAgain()
+            score += 2;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 3) {
             if (fishArray[0].a < _id) {
@@ -56,7 +60,9 @@ var Abschlussaufgabe;
             console.log("RRRRaus du dumme Sau!!!");
             fishArray[0].update(0, 0, 1.33);
             thirdfishArray.splice(0, 1);
-            MakeFabianFishRichAgain();
+            //MakeFabianFishRichAgain()
+            score += 3;
+            document.getElementById("idScore").innerHTML = score.toString();
         }
         if (Abschlussaufgabe.crc.isPointInPath(pfad, _x, _y) == true && _id == 4) {
             if (fishArray[0].a < _id) {
@@ -64,17 +70,13 @@ var Abschlussaufgabe;
                 FabianFischMachtAAPause = true;
                 FabianFishNixMehrBlubb();
             }
-            console.log("RRRRaus du dumme Sau!!!");
-            fishArray[0].update(0, 0, 1.25);
-            fourthfishArray.splice(0, 1);
-            MakeFabianFishRichAgain();
+            //console.log("RRRRaus du dumme Sau!!!");
+            //fishArray[0].update(0, 0, 1.25);
+            //fourthfishArray.splice(0, 1);
+            //MakeFabianFishRichAgain()
         }
     }
     Abschlussaufgabe.pfadgottes = pfadgottes;
-    function MakeFabianFishRichAgain() {
-        score += 1000;
-        document.getElementById("idScore").innerHTML = score.toString();
-    }
     function FabianFishNixMehrBlubb() {
         let gamertag = prompt("Verrate FabianFish Deinen Namen, du Plankton!");
         console.log(gamertag);
@@ -123,7 +125,7 @@ var Abschlussaufgabe;
             thirdfishArray.push(thirdfish);
             thirdfish.draw(x, y);
         }
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 5; i++) {
             let fourthfish = new Abschlussaufgabe.FourthFish();
             fourthfishArray.push(fourthfish);
             fourthfish.draw(x, y);
